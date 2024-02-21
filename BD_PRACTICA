@@ -1,0 +1,29 @@
+create database BD_PRACTICA
+use BD_PRACTICA
+
+CREATE TABLE Clientes (
+    ID_Cliente INT PRIMARY KEY,
+    Nombre NVARCHAR(100),
+    Genero NVARCHAR(50)
+);
+
+-- Crear la tabla de Libros
+CREATE TABLE Libros (
+    ID_Libro INT PRIMARY KEY,
+    Titulo NVARCHAR(100),
+    Tipo INT,
+    Precio DECIMAL(10, 2)
+);
+
+-- Crear la tabla de Ventas
+CREATE TABLE Ventas (
+    ID_Venta INT PRIMARY KEY,
+    ID_Cliente INT,
+    ID_Libro INT,
+    Cantidad INT,
+    Importe_Bruto DECIMAL(10, 2),
+    Monto_Descuento DECIMAL(10, 2),
+    Importe_Neto DECIMAL(10, 2),
+    FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente),
+    FOREIGN KEY (ID_Libro) REFERENCES Libros(ID_Libro)
+);
